@@ -1,0 +1,8 @@
+ansible-playbook -i inventory/homelab/inventory.ini --become cluster.yml --limit k8s-master-0 -vv
+
+
+ansible-playbook -i inventory/homelab/inventory.ini --become cluster.yml --limit @cluster.retry
+ansible-playbook -i inventory/homelab/inventory.ini --become cluster.yml --start-at-task="nome_da_task_que_falhou"
+
+
+ansible-playbook -i inventory/homelab/inventory.ini --become cluster.yml --limit @cluster.retry --start-at-task="nome_da_task_que_falhou"

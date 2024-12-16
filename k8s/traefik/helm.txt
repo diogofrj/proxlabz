@@ -1,0 +1,11 @@
+helm repo add traefik https://traefik.github.io/charts
+
+helm repo update
+
+helm install --namespace=traefik --create-namespace \
+    --set="additionalArguments={--log.level=DEBUG}" \
+    traefik traefik/traefik -f k8s/traefik/traefik-values.yaml
+
+
+    kubectl create secret generic -n metallb-system metallb-memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+error: failed to create secret secrets "metallb-memberlist" already exists
